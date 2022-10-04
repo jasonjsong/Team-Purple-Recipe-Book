@@ -1,0 +1,7 @@
+public class Recipe{
+  String title = "T";
+  String description = "D";
+  String ingredients = "I";
+  String steps = "S";
+  }
+ 
