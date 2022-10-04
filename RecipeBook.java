@@ -29,7 +29,23 @@ public class RecipeBook {
     String addOrSearch = readInput.nextLine();
     if (addOrSearch.equals("A")) {
       System.out.println("Creating new recipe: ");
-      //TODO: add more input options for title, description, etc. once Recipe Object is created
+      System.out.println("Please enter the recipe title");
+      String recipeTitle = readInput.nextLine();
+      System.out.println("Please enter the recipe Description");
+      String recipeDesc = readInput.nextLine();
+      String nextIng;
+      while (nextIng != "done"){
+        System.out.println("Please enter the next Ingredient or type DONE to move on");
+        String nextIng = readInput.nextLine();
+             //TODO: add input to add ingredients
+      }
+      String nextStep;
+      while (nextStep != "done"){
+        System.out.println("Please enter the next Step, or type DONE to move on");
+        String nextIng = readInput.nextLine();
+             //TODO: add input to add steps
+      }
+      //TODO: add input to add these variables to recipe object
     }
     if (addOrSearch.equals("S")) {
       System.out.println("Type in what you want to search for, then press Enter: ");
