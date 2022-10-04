@@ -6,6 +6,24 @@ public class RecipeBook {
     Scanner readInput = new Scanner(System.in);
 
     ArrayList<recipe> book = new ArrayList<recipe>();
+    
+    String[] ingredientsForOmelete = ["eggs", "cheese", "butter"];
+    String[] ingredientsForHamburger = ["ground beef", "tomato", "lettuce", "onion", "butter"];
+    String[] ingredientsForPizza = ["eggs", "flour", "sauce", "cheese", "basil"];
+
+    String[] stepsForOmelete = [];
+    String[] stepsForHamburger = [];
+    String[] stepsForPizza = [];
+
+    //Starting 3 recipes for the book
+    recipe recipe1 = new recipe("Omelete", "Quick and easy breakfast!", ingredientsForOmelete, stepsForOmelete);
+    recipe recipe2 = new recipe("Hamburgers", "Delicious burgers for any time of year.", ingredientsForHamburger, stepsForHamburger);
+    recipe recipe3 = new recipe("Pizza", "Great for parties!", ingredientsForPizza, stepsForPizza);
+
+    //adding the recipes to the book
+    book.add(recipe1);
+    book.add(recipe2);
+    book.add(recipe3);
 
     System.out.println("Do you wish to add a new recipe, or search through the existing cookbook?\nPress 'A' to add a new recipe, or 'S' to search: ");
     String addOrSearch = readInput.nextLine();
@@ -30,13 +48,13 @@ public class RecipeBook {
 public class recipe{
     String title;
     String description;
-    ArrayList<String> ingredients = new ArrayList<String>();
-    ArrayList<String> steps = new ArrayList<String>();
+    String[] ingredients;
+    String[] steps;
     
     public recipe(){
     }
 
-    public recipe(String title, String description, ArrayList ingredients, ArrayList steps){
+    public recipe(String title, String description, String[] ingredients, String[] steps){
         title = title;
         description = description;
         ingredients = ingredients;
