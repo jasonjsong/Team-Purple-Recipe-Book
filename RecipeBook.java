@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class RecipeBook {
+public class RecipeBook extends recipe{
 
   public static void main(String[] args) {
     Scanner readInput = new Scanner(System.in);
@@ -33,16 +33,16 @@ public class RecipeBook {
       String recipeTitle = readInput.nextLine();
       System.out.println("Please enter the recipe Description");
       String recipeDesc = readInput.nextLine();
-      String nextIng;
+      String nextIng = "";
       while (nextIng != "done"){
         System.out.println("Please enter the next Ingredient or type DONE to move on");
-        String nextIng = readInput.nextLine();
+        nextIng = readInput.nextLine();
              //TODO: add input to add ingredients
       }
-      String nextStep;
+      String nextStep = "";
       while (nextStep != "done"){
         System.out.println("Please enter the next Step, or type DONE to move on");
-        String nextIng = readInput.nextLine();
+        nextStep = readInput.nextLine();
              //TODO: add input to add steps
       }
       //TODO: add input to add these variables to recipe object
@@ -54,21 +54,4 @@ public class RecipeBook {
     }
     
   }
-}
-
-public class recipe{
-    String title;
-    String description;
-    String[] ingredients;
-    String[] steps;
-    
-    public recipe(){
-    }
-
-    public recipe(String title1, String description1, String[] ingredients1, String[] steps1){
-        title = title1;
-        description = description1;
-        ingredients = ingredients1;
-        steps = steps1;
-    }
 }
