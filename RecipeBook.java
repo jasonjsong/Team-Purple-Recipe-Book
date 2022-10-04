@@ -7,13 +7,13 @@ public class RecipeBook {
 
     ArrayList<recipe> book = new ArrayList<recipe>();
     
-    String[] ingredientsForOmelete = ["eggs", "cheese", "butter"];
-    String[] ingredientsForHamburger = ["ground beef", "tomato", "lettuce", "onion", "butter"];
-    String[] ingredientsForPizza = ["eggs", "flour", "sauce", "cheese", "basil"];
+    String[] ingredientsForOmelete = {"eggs", "cheese", "butter"};
+    String[] ingredientsForHamburger = {"ground beef", "tomato", "lettuce", "onion", "butter"};
+    String[] ingredientsForPizza = {"eggs", "flour", "sauce", "cheese", "basil"};
 
-    String[] stepsForOmelete = [];
-    String[] stepsForHamburger = [];
-    String[] stepsForPizza = [];
+    String[] stepsForOmelete = {};
+    String[] stepsForHamburger = {};
+    String[] stepsForPizza = {};
 
     //Starting 3 recipes for the book
     recipe recipe1 = new recipe("Omelete", "Quick and easy breakfast!", ingredientsForOmelete, stepsForOmelete);
@@ -70,10 +70,10 @@ public class recipe{
     public recipe(){
     }
 
-    public recipe(String title, String description, String[] ingredients, String[] steps){
-        title = title;
-        description = description;
-        ingredients = ingredients;
-        steps = steps;
+    public recipe(String title1, String description1, String[] ingredients1, String[] steps1){
+        title = title1;
+        description = description1;
+        ingredients = ingredients1;
+        steps = steps1;
     }
 }
