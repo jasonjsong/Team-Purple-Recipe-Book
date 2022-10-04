@@ -53,11 +53,6 @@ public class RecipeBook {
       System.out.println("Searching for " + searching);
     }
     
-    public sortAlphabetically(ArrayList recipes){
-        //length = size(recipes);
-        //for (i=0; i<recipes; i++){ }
-        recipes = Collections.sort(recpies);
-    }
   }
 }
 
