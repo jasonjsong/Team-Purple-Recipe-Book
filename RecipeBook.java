@@ -24,15 +24,32 @@ public class RecipeBook extends recipe{
     book.add(recipe1);
     book.add(recipe2);
     book.add(recipe3);
-
+    
     //Welcome user and let them know what actions they can take as of right now
     System.out.println("Welcome to Team Purple's Recipe Book! \n---");
-    System.out.println("Do you wish to: \n'A'dd a new recipe,\n'S'earch through the existing cookbook,\n'Q'uit the program?");
+    System.out.println("Do you wish to: \n'R'ead through all recipes,\n'A'dd a new recipe,\n'S'earch through the existing cookbook,\n'Q'uit the program?");
     String userInput = "";
     do {
       userInput = readInput.nextLine();
 
-      if (userInput.equalsIgnoreCase("a")) {
+      if (userInput.equalsIgnoreCase("r")){
+        System.out.println("===================================");
+        for (int i = 0; i < book.size(); i ++){
+          System.out.println(book.get(i).title);
+        }
+        System.out.println("=====================================r");
+        System.out.println("Type the name of a recipe you would like to open:");
+        String openRecipe = readInput.nextLine();
+        for (int i = 0; i < book.size(); i ++){
+          if(book.get(i).title.equalsIgnoreCase(openRecipe)){
+            System.out.println(book.get(i).title);
+            System.out.println("Description: " + book.get(i).description);
+            System.out.println("Ingredients: \n" + book.get(i).ingredients);
+            System.out.println("Steps: \n" + book.get(i).steps);
+          }
+        }
+      }
+      else if (userInput.equalsIgnoreCase("a")) {
         System.out.println("Creating new recipe: ");
         System.out.println("Please enter the recipe title");
         String recipeTitle = readInput.nextLine();
@@ -68,6 +85,6 @@ public class RecipeBook extends recipe{
       }
     }
     while (!userInput.equalsIgnoreCase("q"));
-
+    readInput.close();
   }
 }
