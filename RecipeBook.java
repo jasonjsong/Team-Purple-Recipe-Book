@@ -6,7 +6,7 @@ public class RecipeBook extends recipe{
     Scanner readInput = new Scanner(System.in);
 
     ArrayList<recipe> book = new ArrayList<recipe>();
-    
+
     String[] ingredientsForOmelete = {"eggs", "cheese", "butter"};
     String[] ingredientsForHamburger = {"ground beef", "tomato", "lettuce", "onion", "butter"};
     String[] ingredientsForPizza = {"eggs", "flour", "sauce", "cheese", "basil"};
@@ -25,33 +25,49 @@ public class RecipeBook extends recipe{
     book.add(recipe2);
     book.add(recipe3);
 
-    System.out.println("Do you wish to add a new recipe, or search through the existing cookbook?\nPress 'A' to add a new recipe, or 'S' to search: ");
-    String addOrSearch = readInput.nextLine();
-    if (addOrSearch.equals("A")) {
-      System.out.println("Creating new recipe: ");
-      System.out.println("Please enter the recipe title");
-      String recipeTitle = readInput.nextLine();
-      System.out.println("Please enter the recipe Description");
-      String recipeDesc = readInput.nextLine();
-      String nextIng = "";
-      while (nextIng != "done"){
-        System.out.println("Please enter the next Ingredient or type DONE to move on");
-        nextIng = readInput.nextLine();
-             //TODO: add input to add ingredients
+    //Welcome user and let them know what actions they can take as of right now
+    System.out.println("Welcome to Team Purple's Recipe Book! \n---");
+    System.out.println("Do you wish to: \n'A'dd a new recipe,\n'S'earch through the existing cookbook,\n'Q'uit the program?");
+    String userInput = "";
+    do {
+      userInput = readInput.nextLine();
+
+      if (userInput.equalsIgnoreCase("a")) {
+        System.out.println("Creating new recipe: ");
+        System.out.println("Please enter the recipe title");
+        String recipeTitle = readInput.nextLine();
+        System.out.println("Please enter the recipe Description");
+        String recipeDesc = readInput.nextLine();
+        String nextIng = "";
+        while (!(nextIng.equalsIgnoreCase("done"))){
+          System.out.println("Please enter the next Ingredient or type DONE to move on");
+          nextIng = readInput.nextLine();
+               //TODO: add input to add ingredients
+        }
+        String nextStep = "";
+        while (!(nextStep.equalsIgnoreCase("done"))){
+          System.out.println("Please enter the next Step, or type DONE to move on");
+          nextStep = readInput.nextLine();
+               //TODO: add input to add steps
+        }
+        //TODO: add input to add these variables to recipe object
       }
-      String nextStep = "";
-      while (nextStep != "done"){
-        System.out.println("Please enter the next Step, or type DONE to move on");
-        nextStep = readInput.nextLine();
-             //TODO: add input to add steps
+      else if (userInput.equalsIgnoreCase("s")) {
+        System.out.println("Type in what you want to search for, then press Enter: ");
+        String searching = readInput.nextLine();
+        System.out.println("Searching for " + searching + "...\nOne moment please...");
       }
-      //TODO: add input to add these variables to recipe object
+      else if (userInput.equalsIgnoreCase("q")) {
+        System.out.println("Exiting out of Team Purple's Recipe Book. See you soon!");
+        System.exit(0);
+      }
+      else {
+        // Go back to beginning if user input anything else besides 'a' 's' or 'q'
+        System.out.print("Invalid input. You may:\nPress 'a' to add a recipe,\nPress 's' to search the recipe book,\nPress 'q' to quit of the program.\nPress 'a', 's', or 'q': ");
+        continue;
+      }
     }
-    if (addOrSearch.equals("S")) {
-      System.out.println("Type in what you want to search for, then press Enter: ");
-      String searching = readInput.nextLine();
-      System.out.println("Searching for " + searching);
-    }
-    
+    while (!userInput.equalsIgnoreCase("q"));
+
   }
 }
