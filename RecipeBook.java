@@ -24,10 +24,11 @@ public class RecipeBook extends recipe{
     book.add(recipe1);
     book.add(recipe2);
     book.add(recipe3);
-    
+
     //Welcome user and let them know what actions they can take as of right now
-    System.out.println("Welcome to Team Purple's Recipe Book! \n---");
-    System.out.println("Do you wish to: \n'R'ead through all recipes,\n'A'dd a new recipe,\n'S'earch through the existing cookbook,\n'Q'uit the program?");
+    System.out.println("\nWelcome to Team Purple's Recipe Book! \n===================================");
+    System.out.println("Do you wish to: \n1. 'R'ead through all recipes,\n2. 'A'dd a new recipe,\n3. 'S'earch through the existing cookbook,\n4. 'Q'uit the program?");
+    System.out.print("\nEnter 'r', 'a', 's', or 'q' here: ");
     String userInput = "";
     do {
       userInput = readInput.nextLine();
@@ -37,20 +38,28 @@ public class RecipeBook extends recipe{
         for (int i = 0; i < book.size(); i ++){
           System.out.println(book.get(i).title);
         }
-        System.out.println("=====================================r");
-        System.out.println("Type the name of a recipe you would like to open:");
+        System.out.println("====================================");
+        System.out.println("Type the name of a recipe you would like to open, or type 'BACK' to return to the home menu: ");
         String openRecipe = readInput.nextLine();
         for (int i = 0; i < book.size(); i ++){
           if(book.get(i).title.equalsIgnoreCase(openRecipe)){
             System.out.println(book.get(i).title);
             System.out.println("Description: " + book.get(i).description);
+            // tried to do this, the ingredients and steps are some weird thing,
+            // might need to do a loop for each one to show each individual ingredient and step
             System.out.println("Ingredients: \n" + book.get(i).ingredients);
             System.out.println("Steps: \n" + book.get(i).steps);
           }
+          else if (openRecipe.equalsIgnoreCase("back")) {
+            System.out.println("Exiting out of Read through all recipes. Returning to the home menu now...\n");
+            break;
+          }
         }
+
+        System.out.print("\nEnter 'r', 'a', 's', or 'q' here: ");
       }
       else if (userInput.equalsIgnoreCase("a")) {
-        System.out.println("Creating new recipe: ");
+        System.out.println("Creating new recipe... ");
         System.out.println("Please enter the recipe title");
         String recipeTitle = readInput.nextLine();
         System.out.println("Please enter the recipe Description");
@@ -68,19 +77,25 @@ public class RecipeBook extends recipe{
                //TODO: add input to add steps
         }
         //TODO: add input to add these variables to recipe object
+
+        System.out.print("\nEnter 'r', 'a', 's', or 'q' here: ");
       }
       else if (userInput.equalsIgnoreCase("s")) {
-        System.out.println("Type in what you want to search for, then press Enter: ");
+        System.out.print("\nSearching through existing recipes...\nType in exactly what you want to search for: ");
         String searching = readInput.nextLine();
         System.out.println("Searching for " + searching + "...\nOne moment please...");
+        // ADD: search function
+
+        System.out.print("\nEnter 'r', 'a', 's', or 'q' here: ");
       }
       else if (userInput.equalsIgnoreCase("q")) {
-        System.out.println("Exiting out of Team Purple's Recipe Book. See you soon!");
+        System.out.println("\nExiting out of Team Purple's Recipe Book. See you soon!");
         System.exit(0);
       }
       else {
         // Go back to beginning if user input anything else besides 'a' 's' or 'q'
-        System.out.print("Invalid input. You may:\nPress 'a' to add a recipe,\nPress 's' to search the recipe book,\nPress 'q' to quit of the program.\nPress 'a', 's', or 'q': ");
+        System.out.print("Invalid input. You may:\nType 'r' to read through the recipe book,\nType 'a' to add a recipe,\nType 's' to search the recipe book,\nType 'q' to quit of the program.");
+        System.out.print("\nEnter 'r', 'a', 's', or 'q' here: ");
         continue;
       }
     }
