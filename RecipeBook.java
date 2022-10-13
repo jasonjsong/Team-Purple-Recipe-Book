@@ -4,6 +4,7 @@ public class RecipeBook extends recipe{
 
   public static void main(String[] args) {
     Scanner readInput = new Scanner(System.in);
+    Scanner inputFromUser = new Scanner(System.in);
 
     ArrayList<recipe> book = new ArrayList<recipe>();
 
@@ -11,9 +12,9 @@ public class RecipeBook extends recipe{
     String[] ingredientsForHamburger = {"ground beef", "tomato", "lettuce", "onion", "butter"};
     String[] ingredientsForPizza = {"eggs", "flour", "sauce", "cheese", "basil"};
 
-    String[] stepsForOmelete = {};
-    String[] stepsForHamburger = {};
-    String[] stepsForPizza = {};
+    String[] stepsForOmelete = {"Crack eggs into bowl", "Whisk eggs", "Pour into hot pan", "Wait"};
+    String[] stepsForHamburger = {"Place bottom bun", "Place lettuce", "Place tomato", "Place burger", "Place cheese", "Top bun"};
+    String[] stepsForPizza = {"Stretch dough", "Spread sauce", "Sprinkle cheese", "Bake in oven"};
 
     //Starting 3 recipes for the book
     recipe recipe1 = new recipe("Omelete", "Quick and easy breakfast!", ingredientsForOmelete, stepsForOmelete);
@@ -41,22 +42,38 @@ public class RecipeBook extends recipe{
         System.out.println("====================================");
         System.out.println("Type the name of a recipe you would like to open, or type 'BACK' to return to the home menu: ");
         String openRecipe = readInput.nextLine();
+        int recipeIndex = 0;
         for (int i = 0; i < book.size(); i ++){
           if(book.get(i).title.equalsIgnoreCase(openRecipe)){
-            System.out.println(book.get(i).title);
-            System.out.println("Description: " + book.get(i).description);
-            // tried to do this, the ingredients and steps are some weird thing,
-            // might need to do a loop for each one to show each individual ingredient and step
-            System.out.println("Ingredients: \n" + book.get(i).ingredients);
-            System.out.println("Steps: \n" + book.get(i).steps);
+              recipeIndex = i;
           }
-          else if (openRecipe.equalsIgnoreCase("back")) {
-            System.out.println("Exiting out of Read through all recipes. Returning to the home menu now...\n");
-            break;
+          else{
+            System.out.println("No recipe found");
           }
         }
-
+        System.out.println(book.get(recipeIndex).title);
+        System.out.println("Description: " + book.get(recipeIndex).description + "\n");
+        System.out.println("Ingredients: \n");
+          for(int q = 0; q < book.get(recipeIndex).ingredients.length; q++){
+              System.out.println(book.get(recipeIndex).ingredients[q]);
+          }
+          System.out.println("\nPress enter to see the next step. Or type 'All' to see all of the steps");
+          String stepsuser = "";
+          for(int w = 0; w < book.get(recipeIndex).steps.length; w++){
+              stepsuser = inputFromUser.nextLine();    
+              if (stepsuser == "All"){
+                for(int a = w; a < book.get(recipeIndex).steps.length; a++){
+                  System.out.println(book.get(recipeIndex).steps[a]);
+                }
+                break;
+              }
+              else
+                System.out.println(book.get(recipeIndex).steps[w]);
+            
+          }
+        
         System.out.print("\nEnter 'r', 'a', 's', or 'q' here: ");
+
       }
       else if (userInput.equalsIgnoreCase("a")) {
         System.out.println("Creating new recipe... ");
@@ -92,14 +109,9 @@ public class RecipeBook extends recipe{
         System.out.println("\nExiting out of Team Purple's Recipe Book. See you soon!");
         System.exit(0);
       }
-      else {
-        // Go back to beginning if user input anything else besides 'a' 's' or 'q'
-        System.out.print("Invalid input. You may:\nType 'r' to read through the recipe book,\nType 'a' to add a recipe,\nType 's' to search the recipe book,\nType 'q' to quit of the program.");
-        System.out.print("\nEnter 'r', 'a', 's', or 'q' here: ");
-        continue;
-      }
     }
     while (!userInput.equalsIgnoreCase("q"));
     readInput.close();
+    inputFromUser.close();
   }
 }
